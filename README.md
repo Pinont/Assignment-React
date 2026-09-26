@@ -1,0 +1,75 @@
+# Pokédex Team Builder — Assignment 1 (React SPA)
+
+> **อ่านก่อนเริ่ม — ลบกล่องนี้ทิ้งได้ตอนส่ง**
+>
+> - 📤 **ส่งภายใน เสาร์ 26 ก.ย. 69 เวลา 09:00 น.** (ก่อนเข้าคาบวันที่ 7) · ทำเป็นคู่ · อัปโหลดไฟล์ `.zip` ลง Google Sheet ของรายวิชา (ลบ `node_modules` ออกก่อน)
+> - 📄 **โจทย์เต็ม, Twist และ rubric อยู่ใน [`ASSIGNMENT.md`](./ASSIGNMENT.md)** — อ่านให้จบก่อนเริ่ม
+> - 🖼 **หน้าตาเป้าหมายดูได้ที่ `mockup-pokedex.html`** (เปิดด้วยเบราว์เซอร์) — เป็นภาพอ้างอิง ไม่ต้องทำให้เหมือนเป๊ะ ขอแค่ข้อมูลและปุ่มครบตามโจทย์
+> - ติดตั้งไว้แล้ว: Vite 8 · React 19 · React Router v7 · Tailwind CSS v4 · react-hook-form · zod v4 · `@hookform/resolvers`
+> - ❌ ห้ามเพิ่ม Redux / Zustand
+>
+> ```bash
+> npm install
+> npm run dev     # http://localhost:5173
+> npm run build   # ต้องผ่านก่อนส่ง
+> ```
+>
+> **ไฟล์ที่ต้องเขียน** (ทุกไฟล์มีคอมเมนต์บอกว่าเป็นข้อไหนของโจทย์)
+>
+> ```
+> src/
+> ├── main.jsx                  # มี BrowserRouter แล้ว — เหลือครอบ TeamProvider
+> ├── App.jsx                   # Routes ทั้งหมด (ตอนนี้เป็นหน้าทดสอบ ลบทิ้งได้)
+> ├── lib/pokemon.js            # ✅ ให้มาแล้ว: API, MAX_ID, TYPES, idFromUrl(), artworkUrl()
+> ├── hooks/useFetch.js         # R1
+> ├── context/TeamContext.jsx   # R4, R5
+> ├── schemas/registration.js   # R6
+> ├── components/
+> │   ├── Layout.jsx            # layout route
+> │   ├── Nav.jsx
+> │   └── PokemonCard.jsx       # R7 — ใช้ซ้ำ 2 หน้า
+> └── pages/
+>     ├── Home.jsx              # /
+>     ├── PokemonList.jsx       # /pokemon
+>     ├── PokemonDetail.jsx     # /pokemon/:nameOrId
+>     ├── Team.jsx              # /team
+>     └── NotFound.jsx          # *
+> ```
+>
+> เพิ่มไฟล์/โฟลเดอร์เองได้ตามต้องการ — แต่ **`useTeam()` ต้องอยู่ใน `context/TeamContext.jsx`** และ **schema ต้องอยู่ใน `schemas/registration.js`**
+>
+> **README ด้านล่างมีคะแนน** — ต้องกรอกครบทั้ง 3 หัวข้อ ลบคำอธิบายในวงเล็บเหลี่ยม `[ ... ]` ออกแล้วเขียนของกลุ่มตัวเองแทน
+
+---
+
+## 1. สมาชิก
+
+| ชื่อ-นามสกุล | รหัสนักศึกษา |
+| ------------ | ------------ |
+| [ ]          | [ ]          |
+| [ ]          | [ ]          |
+
+## 2. วิธีรัน
+
+```bash
+npm install
+npm run dev
+```
+
+เปิด http://localhost:5173 · ไม่ต้องตั้งค่าอะไรเพิ่ม (PokéAPI ไม่ต้องใช้ key)
+
+## 3. State อยู่ที่ไหน ทำไม
+
+### (ก) ทำไมคำค้นและธาตุอยู่ใน URL ไม่ใช่ `useState`
+
+[ ผู้ใช้ได้อะไรบ้าง — ลองนึกถึงตอน copy ลิงก์ส่งเพื่อน / กด back / refresh ]
+
+### (ข) ทำไมทีมหยุดที่ Context
+
+[ ไล่ decision framework ของวันที่ 5 ทีละขั้น: `useState` ในหน้าเดียว → lift state up → Context → Redux/Zustand — ขั้นไหนไม่พอเพราะอะไร และทำไมไม่ไปต่อถึง Redux/Zustand ]
+
+### (ค) `memo` / `useMemo` / `useCallback` — หรือเหตุผลที่ไม่ใช้
+
+> ✅ **ตอบว่า "ไม่ได้ใช้เลย" ได้คะแนนเต็มเท่ากัน** ถ้าอธิบายได้ว่าทำไมแอปขนาดนี้ยังไม่จำเป็น
+
+[ ใช้ที่ไหนบ้าง ทำไม — หรือถ้าไม่ได้ใช้เลย ทำไมถึงไม่จำเป็น ]
